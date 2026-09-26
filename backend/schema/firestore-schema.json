@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BurguerSyncPedidoSchema",
+  "description": "Contrato de dados da coleção 'pedidos' no Google Firebase Cloud Firestore",
+  "type": "object",
+  "required": ["numeroPedido", "status", "cliente", "itens", "pagamento", "valores"],
+  "properties": {
+    "numeroPedido": {
+      "type": "string",
+      "example": "#BS-1042"
+    },
+    "dataCriacao": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["recebido", "em_preparo", "saiu_entrega", "entregue"],
+      "default": "recebido"
+    },
+    "cliente": {
+      "type": "object",
+      "required": ["nome", "telefone", "endereco"],
+      "properties": {
+        "nome": { "type": "string" },
+        "telefone": { "type": "string" },
+        "endereco": { "type": "string" },
+        "obsEntrega": { "type": "string" }
+      }
+    },
+    "itens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "nome", "qtd", "precoUnit"],
+        "properties": {
+          "id": { "type": "string" },
+          "nome": { "type": "string" },
+          "qtd": { "type": "integer", "minimum": 1 },
+          "precoUnit": { "type": "number", "minimum": 0 },
+          "observacao": { "type": "string" }
+        }
+      }
+    },
+    "pagamento": {
+      "type": "object",
+      "required": ["metodo"],
+      "properties": {
+        "metodo": { "type": "string", "enum": ["pix", "cartao", "dinheiro"] },
+        "trocoPara": { "type": ["string", "null"] }
+      }
+    },
+    "valores": {
+      "type": "object",
+      "required": ["subtotal", "taxaEntrega", "total"],
+      "properties": {
+        "subtotal": { "type": "number" },
+        "taxaEntrega": { "type": "number" },
+        "total": { "type": "number" }
+      }
+    }
+  }
+}
