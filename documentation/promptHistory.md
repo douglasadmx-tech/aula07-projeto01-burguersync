@@ -23,4 +23,11 @@ cancelar
 **Alinhamento /grill-me:**
 - Escolha de repositório: Utilizar o nome atual da pasta 'aula07-projeto01-burguersync' como repositório público.
 
+**Status de Entrega:**
+- Arquitetura de 3 camadas implementada com sucesso.
+- Design integrado fielmente ao protótipo do Google Stitch.
+- Integração em tempo real com Google Cloud Firestore v10.
+- Repositório publicado: https://github.com/douglasadmx-tech/aula07-projeto01-burguersync
+- GitHub Pages ativo: https://douglasadmx-tech.github.io/aula07-projeto01-burguersync/
+
 
